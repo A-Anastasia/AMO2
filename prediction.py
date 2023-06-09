@@ -11,18 +11,12 @@ import pandas as pd
 import pickle
 from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
 
-y_test = pd.read_csv("AMO2/y_test.csv",index_col= "Unnamed: 0")
-x_test = pd.read_csv("AMO2/x_test.csv")
+y_test = pd.read_csv("/home/asha/AMO2/y_test.csv",index_col= "Unnamed: 0")
+x_test = pd.read_csv("/home/asha/AMO2/x_test.csv")
 
-pkl_filename = "AMO2/pickle_model.pkl" 
+pkl_filename = "/home/asha/AMO2/pickle_model.pkl" 
 with open(pkl_filename, 'rb') as file: 
   pickle_model = pickle.load(file)
 
 dtcpred=pickle_model.predict(x_test)
 print("Accuracy Score: ",accuracy_score(y_test,dtcpred))
-
-submission=pickle_model.predict(pd.read_csv("https://raw.githubusercontent.com/A-Anastasia/AMO2/main/test.csv",index_col='id'))
-test1_id=test['id']
-
-dfa=pd.DataFrame({'id':test1_id,'Class':submission})
-dfa.to_csv("submission_predict.csv")

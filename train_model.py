@@ -12,12 +12,12 @@ from sklearn.metrics import accuracy_score,confusion_matrix,classification_repor
 import pandas as pd
 import pickle
 
-y_train = pd.read_csv("AMO2/y_train.csv",index_col= "Unnamed: 0")
-x_train = pd.read_csv("AMO2/x_train.csv")
+y_train = pd.read_csv("/home/asha/AMO2/y_train.csv",index_col= "Unnamed: 0")
+x_train = pd.read_csv("/home/asha/AMO2/x_train.csv")
 
 dtc=DecisionTreeClassifier(criterion='gini')
 dtc.fit(x_train,y_train)
 
-pkl_filename = "AMO2/pickle_model.pkl" 
+pkl_filename = "/home/asha/AMO2/pickle_model.pkl" 
 with open(pkl_filename, 'wb') as file: 
   pickle.dump(dtc, file)
